@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 9 | Hiraya</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(
+                    circle at top,
+                    #eee1c8 0%,
+                    #dfcfb0 45%,
+                    #cbb995 100%
+                );
+            color: #30291f;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .page {
+            width: min(1050px, 100%);
+            margin: auto;
+            background: #f7efde;
+            border: 2px solid #66553d;
+            box-shadow: 0 12px 30px rgba(57, 44, 27, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 9px;
+            border: 1px solid rgba(102, 85, 61, 0.3);
+            pointer-events: none;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 55px 55px 40px;
+            border-bottom: 1px solid #a49377;
+            position: relative;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #69583f;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+        .lesson-label {
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+            color: #8a7350;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            font-weight: normal;
+            line-height: 1.05;
+            color: #382f24;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: #6d5d47;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+        }
+
+        /* CONTENT */
+
+        main {
+            padding: 45px 55px 55px;
+        }
+
+        section {
+            margin-bottom: 55px;
+        }
+
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            color: #8a7350;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            font-weight: normal;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #3b3226;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: normal;
+            margin-bottom: 8px;
+            color: #4b3e2e;
+        }
+
+        p {
+            color: #5a4d3b;
+            margin-bottom: 15px;
+        }
+
+        /* INTRO */
+
+        .intro {
+            font-size: 1.05rem;
+            max-width: 780px;
+        }
+
+        .note {
+            border-left: 3px solid #8a7350;
+            background: #eee3ce;
+            padding: 18px 20px;
+            margin-top: 22px;
+        }
+
+        .note p {
+            margin: 0;
+            font-size: 0.92rem;
+        }
+
+        /* IMAGE GALLERY */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .image-box {
+            background: #e8dcc5;
+            border: 1px solid #a49377;
+            padding: 10px;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+            background: #ded0b5;
+        }
+
+        .caption {
+            padding: 9px 5px 3px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 0.72rem;
+            color: #766246;
+        }
+
+        /* PROCEDURES */
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 17px;
+            background: #eee3ce;
+            border: 1px solid #a49377;
+        }
+
+        .step-number {
+            min-width: 32px;
+            height: 32px;
+            border: 1px solid #8f7b5d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #66553d;
+        }
+
+        .step p {
+            margin: 0;
+            font-size: 0.94rem;
+        }
+
+        /* ADVANTAGES / DISADVANTAGES */
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 22px;
+        }
+
+        .box {
+            padding: 24px;
+            border: 1px solid #a49377;
+            background: #eee3ce;
+        }
+
+        .box h3 {
+            border-bottom: 1px solid #b5a384;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
+        }
+
+        .box ul {
+            padding-left: 20px;
+            color: #5a4d3b;
+        }
+
+        .box li {
+            margin-bottom: 10px;
+        }
+
+        /* BENEFIT */
+
+        .benefit {
+            background: #ded0b5;
+            border: 1px solid #8e7a5b;
+            padding: 28px;
+        }
+
+        .benefit p {
+            margin: 0;
+            font-size: 1.02rem;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #a49377;
+            padding: 25px 55px 35px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #8f7b5d;
+            background: #eee3ce;
+            color: #4d4030;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            transition: 0.2s ease;
+        }
+
+        .nav-button:hover {
+            background: #dfcfb0;
+            border-color: #66553d;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 30px 30px;
+            }
+
+            main {
+                padding: 35px 30px 40px;
+            }
+
+            footer {
+                padding: 22px 30px 30px;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 7px;
+            }
+
+            .page::before {
+                inset: 6px;
+            }
+
+            header {
+                padding: 35px 20px 28px;
+            }
+
+            .back {
+                margin-bottom: 23px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+
+            main {
+                padding: 30px 20px 35px;
+            }
+
+            section {
+                margin-bottom: 45px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.93rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .image-box {
+                padding: 6px;
+            }
+
+            .image-box img {
+                height: 145px;
+            }
+
+            .caption {
+                font-size: 0.65rem;
+            }
+
+            .step {
+                gap: 11px;
+                padding: 14px;
+            }
+
+            .step p {
+                font-size: 0.88rem;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .box {
+                padding: 20px;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="index.html" class="back">
+            ← Back to Lessons
+        </a>
+
+        <div class="lesson-label">
+            Lesson 09
+        </div>
+
+        <h1>
+            Dahon ng Bayabas bilang Gamot
+        </h1>
+
+        <p class="subtitle">
+            Histo-page · Hiraya · TechPro 1103
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- INTRODUCTION -->
+
+        <section>
+
+            <div class="section-number">
+                01 — Panimula
+            </div>
+
+            <h2>
+                Dahon ng Bayabas
+            </h2>
+
+            <p class="intro">
+                Ang dahon ng bayabas ay matagal nang ginagamit
+                sa ilang tradisyonal na paraan bilang halamang
+                pantulong sa pangangalaga ng maliliit na sugat.
+                May mga likas na sangkap ang dahon na pinag-aaralan
+                dahil sa posibleng antimicrobial properties nito.
+            </p>
+
+            <div class="note">
+                <p>
+                    <strong>Paalala:</strong>
+                    Ang tradisyonal na paggamit ng dahon ng bayabas
+                    ay hindi kapalit ng wastong pangunang lunas o
+                    medikal na paggamot. Para sa malalim, malubha,
+                    o may impeksiyong sugat, dapat humingi ng
+                    tulong sa isang health professional.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- IMAGES -->
+
+        <section>
+
+            <div class="section-number">
+                02 — Proseso
+            </div>
+
+            <h2>
+                Pagpapakita ng Pamamaraan
+            </h2>
+
+            <div class="gallery">
+
+                <div class="image-box">
+
+                    <img
+                        src="images/1.png"
+                        alt="Pagpili at paghuhugas ng dahon ng bayabas"
+                    >
+
+                    <div class="caption">
+                        01
+                    </div>
+
+                </div>
+
+
+                <div class="image-box">
+
+                    <img
+                        src="images/2.png"
+                        alt="Pagdurog ng dahon ng bayabas"
+                    >
+
+                    <div class="caption">
+                        02
+                    </div>
+
+                </div>
+
+
+                <div class="image-box">
+
+                    <img
+                        src="images/3.png"
+                        alt="Paglalagay ng dinurog na dahon sa lalagyan"
+                    >
+
+                    <div class="caption">
+                        03
+                    </div>
+
+                </div>
+
+
+                <div class="image-box">
+
+                    <img
+                        src="images/4.png"
+                        alt="Pagpapakita ng paghahanda ng dahon"
+                    >
+
+                    <div class="caption">
+                        04
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROCEDURES -->
+
+        <section>
+
+            <div class="section-number">
+                03 — Mga Hakbang
+            </div>
+
+            <h2>
+                Procedures
+            </h2>
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-number">
+                        1
+                    </div>
+
+                    <p>
+                        Pumili at maghugas ng malinis na dahon
+                        ng bayabas.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        2
+                    </div>
+
+                    <p>
+                        Dikdikin o durugin ang mga dahon.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        3
+                    </div>
+
+                    <p>
+                        Ilagay ang dinurog na dahon sa malinis
+                        na lalagyan.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        4
+                    </div>
+
+                    <p>
+                        Sa tradisyonal na paggamit, maaari itong
+                        ihanda para sa pangangalaga ng balat.
+                        Gayunman, ang paglalagay ng hilaw na
+                        dinurog na dahon sa bukas na sugat ay
+                        maaaring magdulot ng kontaminasyon.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        5
+                    </div>
+
+                    <p>
+                        Hugasan ang kamay pagkatapos humawak
+                        ng dahon o anumang materyal na ginamit
+                        sa paghahanda.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADVANTAGES AND DISADVANTAGES -->
+
+        <section>
+
+            <div class="section-number">
+                04 — Pagsusuri
+            </div>
+
+            <h2>
+                Advantages & Disadvantages
+            </h2>
+
+            <div class="comparison">
+
+                <div class="box">
+
+                    <h3>
+                        Advantages
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Maaaring makatulong sa paglilinis
+                            ng maliliit na sugat kapag ginamit
+                            nang naaangkop.
+                        </li>
+
+                        <li>
+                            May mga natural na sangkap na
+                            pinag-aaralan dahil sa posibleng
+                            epekto laban sa ilang mikrobyo.
+                        </li>
+
+                        <li>
+                            Madaling hanapin at karaniwang mura.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="box">
+
+                    <h3>
+                        Disadvantages
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Maaaring magdulot ng pangangati o
+                            allergic reaction sa ilang tao.
+                        </li>
+
+                        <li>
+                            Hindi nito napapalitan ang wastong
+                            paggamot para sa malubhang sugat
+                            o impeksiyon.
+                        </li>
+
+                        <li>
+                            Kailangang maging malinis ang
+                            paghahanda upang mabawasan ang
+                            panganib ng kontaminasyon.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BENEFITS -->
+
+        <section>
+
+            <div class="section-number">
+                05 — Benepisyo
+            </div>
+
+            <h2>
+                Benefits
+            </h2>
+
+            <div class="benefit">
+
+                <p>
+                    Ang dahon ng bayabas ay maaaring magkaroon
+                    ng gamit sa tradisyonal na pangangalaga at
+                    pinag-aaralan para sa mga natural na
+                    antimicrobial properties nito. Gayunpaman,
+                    hindi ito dapat ituring na kapalit ng
+                    wastong pangunang lunas o gamot para sa
+                    malubhang sugat.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <a href="lesson8.html" class="nav-button">
+            ← Lesson 8
+        </a>
+
+        <a href="index.html" class="nav-button">
+            Back to Home
+        </a>
+
+    </footer>
+
+</div>
+
+</body>
+  </html>
