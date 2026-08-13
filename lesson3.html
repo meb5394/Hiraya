@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 3 | Hiraya</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at top, #eee1c8, #dfcfb0 45%, #cbb995);
+            color: #30291f;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .page {
+            width: min(1050px, 100%);
+            margin: auto;
+            background: #f7efde;
+            border: 2px solid #66553d;
+            box-shadow: 0 12px 30px rgba(57, 44, 27, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 9px;
+            border: 1px solid rgba(102, 85, 61, 0.3);
+            pointer-events: none;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 55px 55px 40px;
+            border-bottom: 1px solid #a49377;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #69583f;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .lesson-label,
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            color: #8a7350;
+            text-transform: uppercase;
+        }
+
+        .lesson-label {
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 6vw, 4.2rem);
+            font-weight: normal;
+            line-height: 1.05;
+            color: #382f24;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: #6d5d47;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+        }
+
+        /* CONTENT */
+
+        main {
+            padding: 45px 55px 55px;
+        }
+
+        section {
+            margin-bottom: 55px;
+        }
+
+        .section-number {
+            margin-bottom: 7px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            font-weight: normal;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #3b3226;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            color: #4b3e2e;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #5a4d3b;
+            margin-bottom: 15px;
+        }
+
+        /* MAIN CARDS */
+
+        .card {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 25px;
+            margin-top: 18px;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* TIMELINE */
+
+        .timeline {
+            margin-top: 25px;
+            border-left: 2px solid #a49377;
+            padding-left: 24px;
+        }
+
+        .timeline-item {
+            position: relative;
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #8a7350;
+            border: 2px solid #f7efde;
+            border-radius: 50%;
+            left: -31px;
+            top: 24px;
+        }
+
+        .timeline-label {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            color: #8a7350;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .timeline-item p {
+            margin: 0;
+            font-size: 0.94rem;
+        }
+
+        /* IMPORTANCE */
+
+        .importance {
+            background: #ded0b5;
+            border: 1px solid #8e7a5b;
+            padding: 25px;
+        }
+
+        .importance p {
+            margin: 0;
+        }
+
+        /* REVIEW */
+
+        .review {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 25px;
+        }
+
+        .review ul {
+            padding-left: 20px;
+            color: #554735;
+        }
+
+        .review li {
+            margin-bottom: 8px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #a49377;
+            padding: 25px 55px 35px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #8f7b5d;
+            background: #eee3ce;
+            color: #4d4030;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+        }
+
+        .nav-button:hover {
+            background: #dfcfb0;
+            border-color: #66553d;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 30px 30px;
+            }
+
+            main {
+                padding: 35px 30px 40px;
+            }
+
+            footer {
+                padding: 22px 30px 30px;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 7px;
+            }
+
+            .page::before {
+                inset: 6px;
+            }
+
+            header {
+                padding: 35px 20px 28px;
+            }
+
+            .back {
+                margin-bottom: 23px;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+
+            main {
+                padding: 30px 20px 35px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.93rem;
+            }
+
+            .card,
+            .importance,
+            .review {
+                padding: 19px;
+            }
+
+            .timeline {
+                padding-left: 17px;
+            }
+
+            .timeline-item {
+                padding: 17px;
+            }
+
+            .timeline-item::before {
+                left: -24px;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="index.html" class="back">
+            ← Back to Lessons
+        </a>
+
+        <div class="lesson-label">
+            Lesson 03
+        </div>
+
+        <h1>
+            Kamalayang Pangkasaysayan
+        </h1>
+
+        <p class="subtitle">
+            Lokal na Konteksto ng Muntinlupa · Hiraya · TechPro 1103
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- KAMALAYAN -->
+
+        <section>
+
+            <div class="section-number">
+                01 — Kamalayan
+            </div>
+
+            <h2>
+                Kamalayang Pangkasaysayan
+            </h2>
+
+            <div class="card">
+
+                <p>
+                    Ang <strong>kamalayang pangkasaysayan</strong>
+                    ay pag-unawa at pagkilala sa mga pangyayari
+                    ng nakaraan at sa kanilang kaugnayan sa
+                    kasalukuyan.
+                </p>
+
+                <p>
+                    Tinutulungan tayo nitong maunawaan kung paano
+                    nabuo ang ating mga komunidad, kultura, tradisyon,
+                    at pagkakakilanlan.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOKAL NA KONTEKSTO -->
+
+        <section>
+
+            <div class="section-number">
+                02 — Lokal na Konteksto
+            </div>
+
+            <h2>
+                Muntinlupa
+            </h2>
+
+            <div class="importance">
+
+                <p>
+                    Ang pag-aaral ng kasaysayan ng sariling lugar
+                    ay mahalaga dahil nagbibigay ito ng mas malalim
+                    na pag-unawa sa pagkakakilanlan at pag-unlad ng
+                    komunidad. Sa pamamagitan nito, mas nakikilala
+                    natin ang mga pangyayaring humubog sa lugar
+                    kung saan tayo nakatira o nag-aaral.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- KASAYSAYAN NG MUNTINLUPA -->
+
+        <section>
+
+            <div class="section-number">
+                03 — Lokal na Kasaysayan
+            </div>
+
+            <h2>
+                Kasaysayan ng Muntinlupa
+            </h2>
+
+            <p>
+                Ang Muntinlupa ay isang lungsod sa katimugang bahagi
+                ng Metro Manila. Ang kasaysayan nito ay nagpapakita
+                ng pagbabago mula sa isang pamayanang may malawak
+                na lupain at mga rural na lugar tungo sa isang
+                maunlad at urbanisadong lungsod.
+            </p>
+
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <div class="timeline-label">
+                        Sinaunang Pamayanan
+                    </div>
+
+                    <p>
+                        Bago ang malawakang urbanisasyon, ang lugar
+                        ng Muntinlupa ay binubuo ng mga pamayanan,
+                        sakahan, at mga lugar na malapit sa
+                        Laguna de Bay.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-label">
+                        Panahon ng Pagbabago
+                    </div>
+
+                    <p>
+                        Sa paglipas ng panahon, nagkaroon ng
+                        mahahalagang pagbabago sa pamamahala,
+                        populasyon, at paggamit ng lupain sa
+                        Muntinlupa.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-label">
+                        Pag-unlad
+                    </div>
+
+                    <p>
+                        Lumago ang Muntinlupa kasabay ng paglawak
+                        ng Metro Manila. Nabuo ang mga bagong
+                        komunidad, negosyo, paaralan, at iba pang
+                        imprastraktura.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-label">
+                        Muntinlupa Ngayon
+                    </div>
+
+                    <p>
+                        Sa kasalukuyan, ang Muntinlupa ay isang
+                        urbanisadong lungsod na kilala sa mga
+                        residential, commercial, industrial, at
+                        institutional areas nito.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- IMPORTANCE -->
+
+        <section>
+
+            <div class="section-number">
+                04 — Kahalagahan
+            </div>
+
+            <h2>
+                Bakit Mahalaga ang Lokal na Kasaysayan?
+            </h2>
+
+            <div class="card">
+
+                <p>
+                    Ang pag-aaral ng kasaysayan ng Muntinlupa ay
+                    tumutulong sa mga mamamayan na maunawaan ang
+                    pinagmulan at pagbabago ng kanilang komunidad.
+                </p>
+
+                <p>
+                    Nakakatulong din ito upang mapahalagahan ang
+                    mga lokal na tradisyon, lugar, tao, at pangyayaring
+                    naging bahagi ng pagbuo ng lungsod.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- REVIEW -->
+
+        <section>
+
+            <div class="section-number">
+                05 — Quick Review
+            </div>
+
+            <div class="review">
+
+                <h2>
+                    Dapat Tandaan
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Ang <strong>kamalayang pangkasaysayan</strong>
+                        ay pag-unawa sa nakaraan at kaugnayan nito
+                        sa kasalukuyan.
+                    </li>
+
+                    <li>
+                        Mahalaga ang lokal na kasaysayan sa pagbuo
+                        ng pagkakakilanlan ng isang komunidad.
+                    </li>
+
+                    <li>
+                        Ang Muntinlupa ay naging isang urbanisadong
+                        lungsod mula sa isang pamayanang dating may
+                        malawak na rural na mga lugar.
+                    </li>
+
+                    <li>
+                        Ang pag-aaral ng kasaysayan ng Muntinlupa
+                        ay tumutulong upang mapahalagahan ang
+                        sariling komunidad.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- NAVIGATION -->
+
+    <footer>
+
+        <a href="lesson2.html" class="nav-button">
+            ← Lesson 2
+        </a>
+
+        <a href="lesson4.html" class="nav-button">
+            Lesson 4 →
+        </a>
+
+    </footer>
+
+</div>
+
+</body>
+</html>

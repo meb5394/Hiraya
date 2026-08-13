@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 5 | Hiraya</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at top, #eee1c8, #dfcfb0 45%, #cbb995);
+            color: #30291f;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .page {
+            width: min(1050px, 100%);
+            margin: auto;
+            background: #f7efde;
+            border: 2px solid #66553d;
+            box-shadow: 0 12px 30px rgba(57, 44, 27, 0.18);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 55px;
+            border-bottom: 1px solid #a49377;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #69583f;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .lesson-label,
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            color: #8a7350;
+            text-transform: uppercase;
+        }
+
+        .lesson-label {
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: normal;
+            line-height: 1.05;
+            color: #382f24;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: #6d5d47;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.07em;
+        }
+
+        /* CONTENT */
+
+        main {
+            padding: 45px 55px 55px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-number {
+            margin-bottom: 7px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            font-weight: normal;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #3b3226;
+        }
+
+        h3 {
+            font-size: 1.45rem;
+            font-weight: normal;
+            color: #403426;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #5a4d3b;
+            margin-bottom: 15px;
+        }
+
+        /* INTRO */
+
+        .intro {
+            background: #eee3ce;
+            border-left: 3px solid #8a7350;
+            padding: 22px;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ILAYA / ILAWOD */
+
+        .areas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .area {
+            border: 1px solid #a49377;
+            background: #eee3ce;
+            padding: 25px;
+        }
+
+        .area-tag {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            color: #8a7350;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        .area p {
+            margin: 0;
+            font-size: 0.94rem;
+        }
+
+        /* GROUPS */
+
+        .groups {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .group {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 20px;
+        }
+
+        .group h3 {
+            font-size: 1.25rem;
+        }
+
+        .group p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* NOTE */
+
+        .note {
+            background: #ded0b5;
+            border: 1px solid #8e7a5b;
+            padding: 25px;
+        }
+
+        .note p {
+            margin: 0;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #a49377;
+            padding: 25px 55px 35px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #8f7b5d;
+            background: #eee3ce;
+            color: #4d4030;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+        }
+
+        .nav-button:hover {
+            background: #dfcfb0;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 30px 30px;
+            }
+
+            main {
+                padding: 35px 30px 40px;
+            }
+
+            footer {
+                padding: 22px 30px 30px;
+            }
+
+            .areas,
+            .groups {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 7px;
+            }
+
+            header {
+                padding: 35px 20px 28px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+
+            main {
+                padding: 30px 20px 35px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.92rem;
+            }
+
+            .intro,
+            .area,
+            .group,
+            .note {
+                padding: 18px;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="index.html" class="back">
+            ← Back to Lessons
+        </a>
+
+        <div class="lesson-label">
+            Lesson 05
+        </div>
+
+        <h1>
+            Ilaya at Ilawod
+        </h1>
+
+        <p class="subtitle">
+            Mga Pangkat at Lokal na Pamayanan · Hiraya · TechPro 1103
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- INTRO -->
+
+        <section>
+
+            <div class="section-number">
+                01 — Panimula
+            </div>
+
+            <h2>
+                Ilaya at Ilawod
+            </h2>
+
+            <div class="intro">
+
+                <p>
+                    Ang mga salitang <strong>Ilaya</strong> at
+                    <strong>Ilawod</strong> ay ginagamit upang
+                    tukuyin ang magkakaibang direksiyon o
+                    lokasyon sa ilang konteksto ng mga pamayanan
+                    sa Pilipinas.
+                </p>
+
+                <p>
+                    Sa pag-aaral ng mga pangkat ng tao, makikita
+                    ang pagkakaiba-iba ng kultura at paraan ng
+                    pamumuhay batay sa kanilang kapaligiran at
+                    lokasyon.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ILAYA / ILAWOD -->
+
+        <section>
+
+            <div class="section-number">
+                02 — Mga Lugar
+            </div>
+
+            <h2>
+                Ilaya at Ilawod
+            </h2>
+
+            <div class="areas">
+
+                <div class="area">
+
+                    <div class="area-tag">
+                        Ilaya
+                    </div>
+
+                    <h3>
+                        Mga Pamayanang Nasa Loob
+                    </h3>
+
+                    <p>
+                        Ang Ilaya ay karaniwang tumutukoy sa
+                        bahaging nasa mataas o papaloob na lugar
+                        mula sa isang batayang lokasyon.
+                    </p>
+
+                </div>
+
+
+                <div class="area">
+
+                    <div class="area-tag">
+                        Ilawod
+                    </div>
+
+                    <h3>
+                        Mga Pamayanang Nasa Baybayin
+                    </h3>
+
+                    <p>
+                        Ang Ilawod ay karaniwang tumutukoy sa
+                        bahaging patungo sa mababang lugar,
+                        ilog, o baybayin depende sa lokal na
+                        gamit ng termino.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ILAYA GROUPS -->
+
+        <section>
+
+            <div class="section-number">
+                03 — Ilaya
+            </div>
+
+            <h2>
+                Mga Pangkat sa Ilaya
+            </h2>
+
+            <div class="groups">
+
+                <div class="group">
+
+                    <h3>
+                        Ifugao
+                    </h3>
+
+                    <p>
+                        Isang katutubong pangkat sa Cordillera
+                        na kilala sa kanilang kultura, tradisyon,
+                        at mga hagdang-hagdang palayan.
+                    </p>
+
+                </div>
+
+
+                <div class="group">
+
+                    <h3>
+                        Kankanaey
+                    </h3>
+
+                    <p>
+                        Isang katutubong pangkat sa Cordillera
+                        na may sariling wika, tradisyon, at
+                        kulturang pinananatili hanggang ngayon.
+                    </p>
+
+                </div>
+
+
+                <div class="group">
+
+                    <h3>
+                        Bontoc
+                    </h3>
+
+                    <p>
+                        Isang katutubong pangkat na pangunahing
+                        matatagpuan sa Mountain Province at
+                        kilala sa natatanging kultura at tradisyon.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ILAWOD GROUPS -->
+
+        <section>
+
+            <div class="section-number">
+                04 — Ilawod
+            </div>
+
+            <h2>
+                Mga Pangkat sa Ilawod
+            </h2>
+
+            <div class="groups">
+
+                <div class="group">
+
+                    <h3>
+                        Tagbanua
+                    </h3>
+
+                    <p>
+                        Isang katutubong pangkat sa Palawan na
+                        may sariling wika, kultura, tradisyon,
+                        at malalim na ugnayan sa kanilang
+                        kapaligiran.
+                    </p>
+
+                </div>
+
+
+                <div class="group">
+
+                    <h3>
+                        Badjao
+                    </h3>
+
+                    <p>
+                        Isang pangkat na kilala sa tradisyonal
+                        na pamumuhay na malapit sa dagat at
+                        mga baybaying bahagi ng Timog Pilipinas.
+                    </p>
+
+                </div>
+
+
+                <div class="group">
+
+                    <h3>
+                        Ivatan
+                    </h3>
+
+                    <p>
+                        Isang katutubong pangkat mula sa Batanes
+                        na kilala sa kanilang natatanging kultura
+                        at paraan ng pamumuhay na nakaangkop sa
+                        kapaligiran ng mga isla.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONCLUSION -->
+
+        <section>
+
+            <div class="section-number">
+                05 — Kahalagahan
+            </div>
+
+            <h2>
+                Dapat Tandaan
+            </h2>
+
+            <div class="note">
+
+                <p>
+                    Ang pag-aaral sa iba't ibang pangkat ng tao
+                    ay nagpapakita ng lawak ng kultura at
+                    pagkakaiba-iba ng mga pamayanan sa Pilipinas.
+                    Ang kanilang lokasyon at kapaligiran ay
+                    maaaring magkaroon ng malaking papel sa
+                    kanilang paraan ng pamumuhay at tradisyon.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- NAVIGATION -->
+
+    <footer>
+
+        <a href="lesson4.html" class="nav-button">
+            ← Lesson 4
+        </a>
+
+        <a href="lesson6.html" class="nav-button">
+            Lesson 6 →
+        </a>
+
+    </footer>
+
+</div>
+
+</body>
+</html>

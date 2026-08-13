@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 8 | Hiraya</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at top, #eee1c8, #dfcfb0 45%, #cbb995);
+            color: #30291f;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .page {
+            width: min(1050px, 100%);
+            margin: auto;
+            background: #f7efde;
+            border: 2px solid #66553d;
+            box-shadow: 0 12px 30px rgba(57, 44, 27, 0.18);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 55px;
+            border-bottom: 1px solid #a49377;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #69583f;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .lesson-label,
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            color: #8a7350;
+            text-transform: uppercase;
+        }
+
+        .lesson-label {
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 4.3rem);
+            font-weight: normal;
+            line-height: 1.05;
+            color: #382f24;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: #6d5d47;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+        }
+
+        /* CONTENT */
+
+        main {
+            padding: 45px 55px 55px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-number {
+            margin-bottom: 7px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            font-weight: normal;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #3b3226;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: normal;
+            color: #403426;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #5a4d3b;
+            margin-bottom: 15px;
+        }
+
+        /* INTRO */
+
+        .intro {
+            background: #eee3ce;
+            border-left: 3px solid #8a7350;
+            padding: 23px;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 23px;
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        .card-tag {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            color: #8a7350;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        /* MANUNGGUL */
+
+        .featured {
+            background: #ded0b5;
+            border: 1px solid #8e7a5b;
+            padding: 27px;
+        }
+
+        .featured p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* PAMAHIIN */
+
+        .pamahiin {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .pamahiin-item {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 18px;
+        }
+
+        .pamahiin-item strong {
+            color: #403426;
+        }
+
+        .pamahiin-item p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* SUMMARY */
+
+        .summary {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 25px;
+        }
+
+        .summary ul {
+            padding-left: 20px;
+            color: #554735;
+        }
+
+        .summary li {
+            margin-bottom: 8px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #a49377;
+            padding: 25px 55px 35px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #8f7b5d;
+            background: #eee3ce;
+            color: #4d4030;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+        }
+
+        .nav-button:hover {
+            background: #dfcfb0;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 30px 30px;
+            }
+
+            main {
+                padding: 35px 30px 40px;
+            }
+
+            footer {
+                padding: 22px 30px 30px;
+            }
+
+            .cards,
+            .pamahiin {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 7px;
+            }
+
+            header {
+                padding: 35px 20px 28px;
+            }
+
+            h1 {
+                font-size: 2.35rem;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+
+            main {
+                padding: 30px 20px 35px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.92rem;
+            }
+
+            .intro,
+            .card,
+            .featured,
+            .pamahiin-item,
+            .summary {
+                padding: 18px;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="index.html" class="back">
+            ← Back to Lessons
+        </a>
+
+        <div class="lesson-label">
+            Lesson 08
+        </div>
+
+        <h1>
+            Sinaunang Paniniwala at Kultura
+        </h1>
+
+        <p class="subtitle">
+            Mga Paniniwala ng mga Sinaunang Pilipino · Hiraya · TechPro 1103
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- INTRO -->
+
+        <section>
+
+            <div class="section-number">
+                01 — Panimula
+            </div>
+
+            <h2>
+                Sinaunang Paniniwala at Kultura ng mga Pilipino
+            </h2>
+
+            <div class="intro">
+
+                <p>
+                    Bago dumating ang mga pangunahing relihiyong
+                    dayuhan, ang mga sinaunang pamayanan sa
+                    Pilipinas ay mayroon nang sariling mga
+                    paniniwala, ritwal, tradisyon, at paraan
+                    ng pag-unawa sa kalikasan at espirituwal
+                    na mundo.
+                </p>
+
+                <p>
+                    Ang mga paniniwalang ito ay naging bahagi
+                    ng kanilang kultura at naipasa sa iba't
+                    ibang henerasyon.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BELIEFS -->
+
+        <section>
+
+            <div class="section-number">
+                02 — Mga Paniniwala
+            </div>
+
+            <h2>
+                Mahahalagang Konsepto
+            </h2>
+
+            <div class="cards">
+
+                <article class="card">
+
+                    <div class="card-tag">
+                        Paniniwala
+                    </div>
+
+                    <h3>
+                        Bathala
+                    </h3>
+
+                    <p>
+                        Ang Bathala ay isang katawagang ginamit
+                        para sa pinakamataas na diyos o makapangyarihang
+                        nilalang sa ilang sinaunang paniniwala
+                        ng mga Tagalog.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-tag">
+                        Tradisyon
+                    </div>
+
+                    <h3>
+                        Babaylan
+                    </h3>
+
+                    <p>
+                        Ang babaylan ay isang tradisyonal na
+                        espirituwal na pinuno sa ilang pamayanang
+                        Pilipino. Maaari siyang manguna sa mga
+                        ritwal at magsilbing tagapamagitan sa
+                        komunidad at daigdig ng espiritu.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-tag">
+                        Tradisyon
+                    </div>
+
+                    <h3>
+                        Katalonan
+                    </h3>
+
+                    <p>
+                        Ang katalonan ay katawagang ginamit sa
+                        ilang sinaunang pamayanang Tagalog para
+                        sa taong may tungkuling espirituwal,
+                        tulad ng pangunguna sa mga ritwal.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- MANUNGGUL JAR -->
+
+        <section>
+
+            <div class="section-number">
+                03 — Sinaunang Artifact
+            </div>
+
+            <h2>
+                Manunggul Jar
+            </h2>
+
+            <div class="featured">
+
+                <p>
+                    Ang <strong>Manunggul Jar</strong> ay isang
+                    sinaunang banga na natagpuan sa Tabon Caves
+                    sa Palawan.
+                </p>
+
+                <p>
+                    Kilala ito sa takip na may ukit ng dalawang
+                    pigura na sakay ng isang bangka. Iniuugnay
+                    ang disenyo nito sa mga sinaunang paniniwala
+                    tungkol sa paglalakbay ng kaluluwa patungo
+                    sa kabilang buhay.
+                </p>
+
+                <p>
+                    Mahalaga ito bilang ebidensya ng sinaunang
+                    kultura at paniniwala ng mga taong nanirahan
+                    sa kapuluan.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PAMAHIIN -->
+
+        <section>
+
+            <div class="section-number">
+                04 — Pamahiin
+            </div>
+
+            <h2>
+                Mga Pamahiin
+            </h2>
+
+            <p>
+                Ang <strong>pamahiin</strong> ay mga paniniwalang
+                naipapasa mula sa isang henerasyon patungo sa
+                iba. Karaniwan itong may kaugnayan sa mga
+                pangyayari, kilos, bagay, o palatandaan na
+                pinaniniwalaang maaaring magdulot ng mabuti
+                o masamang resulta.
+            </p>
+
+            <div class="pamahiin">
+
+                <div class="pamahiin-item">
+
+                    <p>
+                        <strong>Pagwawalis sa gabi</strong><br>
+                        May paniniwalang hindi dapat magwalis
+                        sa gabi dahil maaaring mawala ang
+                        suwerte.
+                    </p>
+
+                </div>
+
+
+                <div class="pamahiin-item">
+
+                    <p>
+                        <strong>Pag-upo sa hapag</strong><br>
+                        May ilang pamahiin tungkol sa pag-upo
+                        o pagkilos sa hapag-kainan na iniuugnay
+                        sa suwerte o malas.
+                    </p>
+
+                </div>
+
+
+                <div class="pamahiin-item">
+
+                    <p>
+                        <strong>Pagpapatong ng paa</strong><br>
+                        May paniniwalang ang ilang kilos tulad
+                        ng pagpapatong ng paa sa unan ay maaaring
+                        magdulot ng hindi magandang kapalaran.
+                    </p>
+
+                </div>
+
+
+                <div class="pamahiin-item">
+
+                    <p>
+                        <strong>Pagbati sa matatanda</strong><br>
+                        Ang paggalang sa matatanda, tulad ng
+                        pagmamano, ay bahagi ng kulturang
+                        Pilipino at pagpapahalaga sa nakatatanda.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section>
+
+            <div class="section-number">
+                05 — Quick Review
+            </div>
+
+            <div class="summary">
+
+                <h2>
+                    Dapat Tandaan
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Ang mga sinaunang Pilipino ay may sariling
+                        paniniwala at tradisyon bago dumating ang
+                        mga pangunahing relihiyong dayuhan.
+                    </li>
+
+                    <li>
+                        Ang <strong>Bathala</strong> ay isang
+                        katawagang ginamit para sa pinakamataas
+                        na diyos sa ilang sinaunang paniniwala
+                        ng mga Tagalog.
+                    </li>
+
+                    <li>
+                        Ang <strong>babaylan</strong> at
+                        <strong>katalonan</strong> ay mga taong
+                        may mahahalagang tungkuling espirituwal
+                        sa ilang sinaunang pamayanan.
+                    </li>
+
+                    <li>
+                        Ang <strong>Manunggul Jar</strong> ay
+                        mahalagang ebidensya ng sinaunang kultura
+                        at paniniwala sa Pilipinas.
+                    </li>
+
+                    <li>
+                        Ang <strong>pamahiin</strong> ay mga
+                        paniniwalang naipapasa mula sa
+                        henerasyon patungo sa iba.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- NAVIGATION -->
+
+    <footer>
+
+        <a href="lesson7.html" class="nav-button">
+            ← Lesson 7
+        </a>
+
+        <a href="lesson9.html" class="nav-button">
+            Lesson 9 →
+        </a>
+
+    </footer>
+
+</div>
+
+</body>
+</html>

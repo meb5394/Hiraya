@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 7 | Hiraya</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at top, #eee1c8, #dfcfb0 45%, #cbb995);
+            color: #30291f;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .page {
+            width: min(1050px, 100%);
+            margin: auto;
+            background: #f7efde;
+            border: 2px solid #66553d;
+            box-shadow: 0 12px 30px rgba(57, 44, 27, 0.18);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 55px;
+            border-bottom: 1px solid #a49377;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #69583f;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .lesson-label,
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            color: #8a7350;
+            text-transform: uppercase;
+        }
+
+        .lesson-label {
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 6vw, 4.3rem);
+            font-weight: normal;
+            line-height: 1.05;
+            color: #382f24;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: #6d5d47;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+        }
+
+        /* CONTENT */
+
+        main {
+            padding: 45px 55px 55px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-number {
+            margin-bottom: 7px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            font-weight: normal;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #3b3226;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: normal;
+            color: #403426;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #5a4d3b;
+            margin-bottom: 15px;
+        }
+
+        /* INTRO */
+
+        .intro {
+            background: #eee3ce;
+            border-left: 3px solid #8a7350;
+            padding: 23px;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* RELIGION CARDS */
+
+        .religions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .religion {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 23px;
+        }
+
+        .religion-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            color: #8a7350;
+            letter-spacing: 0.12em;
+            margin-bottom: 7px;
+        }
+
+        .religion p {
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        /* BELIEF TERMS */
+
+        .terms {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .term {
+            border: 1px solid #a49377;
+            background: #eee3ce;
+            padding: 20px;
+        }
+
+        .term h3 {
+            font-size: 1.2rem;
+        }
+
+        .term p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* SUMMARY */
+
+        .summary {
+            background: #ded0b5;
+            border: 1px solid #8e7a5b;
+            padding: 25px;
+        }
+
+        .summary ul {
+            padding-left: 20px;
+            color: #554735;
+        }
+
+        .summary li {
+            margin-bottom: 8px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #a49377;
+            padding: 25px 55px 35px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #8f7b5d;
+            background: #eee3ce;
+            color: #4d4030;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+        }
+
+        .nav-button:hover {
+            background: #dfcfb0;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 30px 30px;
+            }
+
+            main {
+                padding: 35px 30px 40px;
+            }
+
+            footer {
+                padding: 22px 30px 30px;
+            }
+
+            .religions,
+            .terms {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 7px;
+            }
+
+            header {
+                padding: 35px 20px 28px;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+
+            main {
+                padding: 30px 20px 35px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.92rem;
+            }
+
+            .intro,
+            .religion,
+            .term,
+            .summary {
+                padding: 18px;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="index.html" class="back">
+            ← Back to Lessons
+        </a>
+
+        <div class="lesson-label">
+            Lesson 07
+        </div>
+
+        <h1>
+            Paniniwala at Pananampalataya
+        </h1>
+
+        <p class="subtitle">
+            Mga Relihiyon at Pananaw sa Daigdig · Hiraya · TechPro 1103
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- PANINIWALA -->
+
+        <section>
+
+            <div class="section-number">
+                01 — Paniniwala
+            </div>
+
+            <h2>
+                Paniniwala at Pananampalataya
+            </h2>
+
+            <div class="intro">
+
+                <p>
+                    Ang <strong>paniniwala</strong> ay mga ideya
+                    o kaisipang tinatanggap ng isang tao o pangkat
+                    bilang totoo o mahalaga.
+                </p>
+
+                <p>
+                    Ang <strong>pananampalataya</strong> naman ay
+                    matibay na pagtitiwala o paniniwala sa isang
+                    relihiyon, Diyos, o espirituwal na kaisipan.
+                </p>
+
+                <p>
+                    Ang mga paniniwala at pananampalataya ay maaaring
+                    magkaroon ng malaking impluwensya sa kultura,
+                    tradisyon, pagpapahalaga, at pamumuhay ng mga tao.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- RELIGIONS -->
+
+        <section>
+
+            <div class="section-number">
+                02 — Mga Relihiyon
+            </div>
+
+            <h2>
+                Mga Pangunahing Relihiyon sa Mundo
+            </h2>
+
+            <div class="religions">
+
+                <article class="religion">
+
+                    <div class="religion-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Kristiyanismo
+                    </h3>
+
+                    <p>
+                        Isang relihiyong nakabatay sa mga aral at
+                        buhay ni Hesus Kristo. Kabilang dito ang
+                        iba't ibang tradisyon at denominasyon.
+                    </p>
+
+                </article>
+
+
+                <article class="religion">
+
+                    <div class="religion-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Islam
+                    </h3>
+
+                    <p>
+                        Isang monoteistikong relihiyon na nakabatay
+                        sa paniniwala sa iisang Diyos, si Allah,
+                        at sa mga aral ng Qur'an at ni Propeta Muhammad.
+                    </p>
+
+                </article>
+
+
+                <article class="religion">
+
+                    <div class="religion-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Hudaismo
+                    </h3>
+
+                    <p>
+                        Isang sinaunang monoteistikong relihiyon
+                        ng mga Hudyo na may mahabang kasaysayan at
+                        tradisyong nakabatay sa Torah at iba pang
+                        banal na kasulatan.
+                    </p>
+
+                </article>
+
+
+                <article class="religion">
+
+                    <div class="religion-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Budismo
+                    </h3>
+
+                    <p>
+                        Isang tradisyong espirituwal na nagmula sa
+                        India at nakatuon sa mga aral ni Siddhartha
+                        Gautama, na kilala bilang Buddha.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- OTHER BELIEFS -->
+
+        <section>
+
+            <div class="section-number">
+                03 — Iba Pang Paniniwala
+            </div>
+
+            <h2>
+                Mga Paniniwala at Tradisyon
+            </h2>
+
+            <div class="terms">
+
+                <article class="term">
+
+                    <h3>
+                        Animismo
+                    </h3>
+
+                    <p>
+                        Paniniwalang may espiritu o puwersang
+                        espirituwal sa mga bagay, nilalang, o
+                        bahagi ng kalikasan.
+                    </p>
+
+                </article>
+
+
+                <article class="term">
+
+                    <h3>
+                        Paganismo
+                    </h3>
+
+                    <p>
+                        Isang malawak na katawagan para sa iba't
+                        ibang tradisyong panrelihiyon na hindi
+                        kabilang sa mga pangunahing relihiyong
+                        Abrahamiko.
+                    </p>
+
+                </article>
+
+
+                <article class="term">
+
+                    <h3>
+                        Mitolohiya
+                    </h3>
+
+                    <p>
+                        Koleksiyon ng mga tradisyonal na kuwento
+                        tungkol sa mga diyos, bayani, nilalang,
+                        at pinagmulan ng mundo o kultura.
+                    </p>
+
+                </article>
+
+
+                <article class="term">
+
+                    <h3>
+                        Politeismo
+                    </h3>
+
+                    <p>
+                        Paniniwala sa pagkakaroon ng
+                        <strong>maraming diyos</strong>.
+                    </p>
+
+                </article>
+
+
+                <article class="term">
+
+                    <h3>
+                        Monoteismo
+                    </h3>
+
+                    <p>
+                        Paniniwala sa pagkakaroon ng
+                        <strong>iisang Diyos</strong>.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section>
+
+            <div class="section-number">
+                04 — Quick Review
+            </div>
+
+            <div class="summary">
+
+                <h2>
+                    Dapat Tandaan
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Ang paniniwala at pananampalataya ay
+                        nakakaimpluwensya sa kultura at pamumuhay.
+                    </li>
+
+                    <li>
+                        Kabilang sa mga pangunahing relihiyon sa
+                        mundo ang Kristiyanismo, Islam, Hudaismo,
+                        at Budismo.
+                    </li>
+
+                    <li>
+                        Ang <strong>animismo</strong> ay paniniwala
+                        sa mga espiritu o puwersang espirituwal
+                        sa kalikasan.
+                    </li>
+
+                    <li>
+                        Ang <strong>politeismo</strong> ay paniniwala
+                        sa maraming diyos.
+                    </li>
+
+                    <li>
+                        Ang <strong>monoteismo</strong> ay paniniwala
+                        sa iisang Diyos.
+                    </li>
+
+                    <li>
+                        Ang <strong>mitolohiya</strong> ay binubuo
+                        ng mga tradisyonal na kuwento na bahagi
+                        ng kultura ng isang pangkat.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- NAVIGATION -->
+
+    <footer>
+
+        <a href="lesson6.html" class="nav-button">
+            ← Lesson 6
+        </a>
+
+        <a href="lesson8.html" class="nav-button">
+            Lesson 8 →
+        </a>
+
+    </footer>
+
+</div>
+
+</body>
+</html>

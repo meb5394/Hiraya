@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 6 | Hiraya</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at top, #eee1c8, #dfcfb0 45%, #cbb995);
+            color: #30291f;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .page {
+            width: min(1050px, 100%);
+            margin: auto;
+            background: #f7efde;
+            border: 2px solid #66553d;
+            box-shadow: 0 12px 30px rgba(57, 44, 27, 0.18);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 55px;
+            border-bottom: 1px solid #a49377;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #69583f;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .lesson-label,
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            color: #8a7350;
+            text-transform: uppercase;
+        }
+
+        .lesson-label {
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 4.2rem);
+            font-weight: normal;
+            line-height: 1.05;
+            color: #382f24;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: #6d5d47;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+        }
+
+        /* CONTENT */
+
+        main {
+            padding: 45px 55px 55px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-number {
+            margin-bottom: 7px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            font-weight: normal;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #3b3226;
+        }
+
+        h3 {
+            font-size: 1.45rem;
+            font-weight: normal;
+            color: #403426;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #5a4d3b;
+            margin-bottom: 15px;
+        }
+
+        /* INTRO */
+
+        .intro {
+            background: #eee3ce;
+            border-left: 3px solid #8a7350;
+            padding: 23px;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* CULTURE CARDS */
+
+        .culture-types {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .culture-card {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 25px;
+        }
+
+        .tag {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            color: #8a7350;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        .culture-card p {
+            font-size: 0.94rem;
+            margin-bottom: 10px;
+        }
+
+        .examples {
+            font-family: Arial, sans-serif;
+            font-size: 0.82rem;
+            color: #766246;
+        }
+
+        /* BINUKOT */
+
+        .binukot {
+            background: #ded0b5;
+            border: 1px solid #8e7a5b;
+            padding: 27px;
+        }
+
+        .binukot p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* REVIEW */
+
+        .review {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 25px;
+        }
+
+        .review ul {
+            padding-left: 20px;
+            color: #554735;
+        }
+
+        .review li {
+            margin-bottom: 8px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #a49377;
+            padding: 25px 55px 35px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #8f7b5d;
+            background: #eee3ce;
+            color: #4d4030;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+        }
+
+        .nav-button:hover {
+            background: #dfcfb0;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 30px 30px;
+            }
+
+            main {
+                padding: 35px 30px 40px;
+            }
+
+            footer {
+                padding: 22px 30px 30px;
+            }
+
+            .culture-types {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 7px;
+            }
+
+            header {
+                padding: 35px 20px 28px;
+            }
+
+            h1 {
+                font-size: 2.35rem;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+
+            main {
+                padding: 30px 20px 35px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.92rem;
+            }
+
+            .intro,
+            .culture-card,
+            .binukot,
+            .review {
+                padding: 19px;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="index.html" class="back">
+            ← Back to Lessons
+        </a>
+
+        <div class="lesson-label">
+            Lesson 06
+        </div>
+
+        <h1>
+            Kultura at Kamalayang Pangkasaysayan
+        </h1>
+
+        <p class="subtitle">
+            Materyal at Di-Materyal na Kultura · Hiraya · TechPro 1103
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- INTRO -->
+
+        <section>
+
+            <div class="section-number">
+                01 — Ugnayan
+            </div>
+
+            <h2>
+                Kultura at Kamalayang Pangkasaysayan
+            </h2>
+
+            <div class="intro">
+
+                <p>
+                    Ang <strong>kultura</strong> ay binubuo ng mga
+                    paniniwala, kaugalian, tradisyon, kaalaman,
+                    sining, at mga bagay na ginagamit ng isang
+                    pangkat ng tao.
+                </p>
+
+                <p>
+                    May kaugnayan ito sa <strong>kamalayang
+                    pangkasaysayan</strong> dahil ang kultura ay
+                    nagsisilbing bahagi ng ating pagkakakilanlan
+                    at nag-uugnay sa atin sa mga karanasan ng
+                    mga naunang henerasyon.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- TYPES OF CULTURE -->
+
+        <section>
+
+            <div class="section-number">
+                02 — Uri ng Kultura
+            </div>
+
+            <h2>
+                Materyal at Di-Materyal na Kultura
+            </h2>
+
+            <div class="culture-types">
+
+                <!-- TANGIBLE -->
+
+                <article class="culture-card">
+
+                    <div class="tag">
+                        Materyal na Kultura
+                    </div>
+
+                    <h3>
+                        Tangible
+                    </h3>
+
+                    <p>
+                        Tumutukoy sa mga bagay na pisikal at
+                        maaaring makita, mahawakan, o magamit
+                        ng mga tao.
+                    </p>
+
+                    <div class="examples">
+                        Halimbawa: kasuotan, kagamitan, gusali,
+                        likhang-sining, at mga sinaunang bagay.
+                    </div>
+
+                </article>
+
+
+                <!-- INTANGIBLE -->
+
+                <article class="culture-card">
+
+                    <div class="tag">
+                        Di-Materyal na Kultura
+                    </div>
+
+                    <h3>
+                        Intangible
+                    </h3>
+
+                    <p>
+                        Tumutukoy sa mga kultura na hindi pisikal
+                        ngunit bahagi ng pamumuhay at pagkakakilanlan
+                        ng isang pangkat.
+                    </p>
+
+                    <div class="examples">
+                        Halimbawa: wika, paniniwala, tradisyon,
+                        awit, kaugalian, at kaalaman.
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- BINUKOT -->
+
+        <section>
+
+            <div class="section-number">
+                03 — Halimbawa
+            </div>
+
+            <h2>
+                Binukot
+            </h2>
+
+            <div class="binukot">
+
+                <p>
+                    Ang <strong>binukot</strong> ay isang
+                    tradisyonal na kaugalian na naitala sa ilang
+                    katutubong pamayanan sa Panay. Sa kaugaliang
+                    ito, ang ilang batang babae ay inihihiwalay
+                    o pinananatili sa loob ng tahanan at inihahanda
+                    para sa isang partikular na papel sa kanilang
+                    komunidad.
+                </p>
+
+                <p>
+                    Ang mga binukot ay maaari ring matuto ng mga
+                    tradisyon, awit, kuwento, at iba pang kaalaman
+                    na ipinapasa mula sa isang henerasyon patungo
+                    sa iba.
+                </p>
+
+                <p>
+                    Ipinapakita nito kung paano maaaring maipasa
+                    ang mga kaugalian at kaalaman bilang bahagi
+                    ng di-materyal na kultura.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- REVIEW -->
+
+        <section>
+
+            <div class="section-number">
+                04 — Quick Review
+            </div>
+
+            <div class="review">
+
+                <h2>
+                    Dapat Tandaan
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Ang kultura ay mahalagang bahagi ng
+                        pagkakakilanlan ng isang pangkat.
+                    </li>
+
+                    <li>
+                        Ang <strong>tangible</strong> ay tumutukoy
+                        sa mga bagay na pisikal at nahahawakan.
+                    </li>
+
+                    <li>
+                        Ang <strong>intangible</strong> ay tumutukoy
+                        sa wika, paniniwala, tradisyon, kaugalian,
+                        at iba pang hindi pisikal na kultura.
+                    </li>
+
+                    <li>
+                        Ang binukot ay isang halimbawa ng
+                        tradisyonal na kaugaliang naitala sa
+                        ilang pamayanang katutubo sa Panay.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- NAVIGATION -->
+
+    <footer>
+
+        <a href="lesson5.html" class="nav-button">
+            ← Lesson 5
+        </a>
+
+        <a href="lesson7.html" class="nav-button">
+            Lesson 7 →
+        </a>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
