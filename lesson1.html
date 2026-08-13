@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 1 | Hiraya</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(
+                    circle at top,
+                    #eee1c8 0%,
+                    #dfcfb0 45%,
+                    #cbb995 100%
+                );
+            color: #30291f;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================== */
+
+        .page {
+            width: min(1050px, 100%);
+            margin: auto;
+            background: #f7efde;
+            border: 2px solid #66553d;
+            box-shadow: 0 12px 30px rgba(57, 44, 27, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 9px;
+            border: 1px solid rgba(102, 85, 61, 0.3);
+            pointer-events: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            padding: 55px 55px 40px;
+            border-bottom: 1px solid #a49377;
+            position: relative;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #69583f;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+        .lesson-label {
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+            color: #8a7350;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            font-weight: normal;
+            line-height: 1.05;
+            color: #382f24;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: #6d5d47;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+        }
+
+        /* =========================
+           CONTENT
+        ========================== */
+
+        main {
+            padding: 45px 55px 55px;
+        }
+
+        section {
+            margin-bottom: 60px;
+            scroll-margin-top: 25px;
+        }
+
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            color: #8a7350;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            font-weight: normal;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #3b3226;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: normal;
+            margin-bottom: 8px;
+            color: #4b3e2e;
+        }
+
+        p {
+            color: #5a4d3b;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           INTRODUCTION
+        ========================== */
+
+        .intro {
+            font-size: 1.08rem;
+            max-width: 780px;
+        }
+
+        .important {
+            border-left: 3px solid #8a7350;
+            background: #eee3ce;
+            padding: 20px 22px;
+            margin-top: 25px;
+        }
+
+        .important p {
+            margin: 0;
+        }
+
+        /* =========================
+           IMAGE BOX
+        ========================== */
+
+        .image-box {
+            background: #e8dcc5;
+            border: 1px solid #a49377;
+            padding: 12px;
+            margin: 25px 0 30px;
+            text-align: center;
+        }
+
+        .image-box img {
+            display: block;
+            width: 100%;
+            max-height: 430px;
+            object-fit: contain;
+            margin: auto;
+        }
+
+        .image-caption {
+            padding: 10px 5px 2px;
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            color: #766246;
+        }
+
+        /* Placeholder if image hasn't been downloaded */
+
+        .image-placeholder {
+            min-height: 230px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            color: #817157;
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+        }
+
+        /* =========================
+           TWO COLUMN CARDS
+        ========================== */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 22px;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* =========================
+           COORDINATE CARDS
+        ========================== */
+
+        .concept {
+            border: 1px solid #a49377;
+            padding: 25px;
+            margin-top: 18px;
+            background: rgba(238, 227, 206, 0.55);
+        }
+
+        .concept-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .concept-title span {
+            font-family: Arial, sans-serif;
+            font-size: 0.68rem;
+            color: #8a7350;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           SPECIAL LATITUDE GRID
+        ========================== */
+
+        .latitude-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 25px;
+        }
+
+        .latitude-item {
+            padding: 20px;
+            background: #eee3ce;
+            border: 1px solid #a49377;
+        }
+
+        .latitude-degree {
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            color: #8a7350;
+            margin-bottom: 5px;
+        }
+
+        .latitude-item h3 {
+            margin-bottom: 7px;
+        }
+
+        .latitude-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* =========================
+           LOCATION SECTION
+        ========================== */
+
+        .location-card {
+            border: 1px solid #a49377;
+            margin-top: 14px;
+            padding: 22px;
+            background: #eee3ce;
+        }
+
+        .location-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .location-card p {
+            margin-bottom: 8px;
+        }
+
+        .example {
+            font-family: Arial, sans-serif;
+            font-size: 0.82rem;
+            color: #756247;
+        }
+
+        /* =========================
+           CARTOGRAPHER
+        ========================== */
+
+        .cartographer {
+            background: #e9ddc7;
+            border: 1px solid #a49377;
+            padding: 28px;
+            margin-top: 20px;
+        }
+
+        .cartographer p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* =========================
+           QUICK REVIEW
+        ========================== */
+
+        .review {
+            background: #ded0b5;
+            border: 1px solid #8e7a5b;
+            padding: 28px;
+        }
+
+        .review h2 {
+            margin-bottom: 15px;
+        }
+
+        .review-list {
+            list-style: none;
+        }
+
+        .review-list li {
+            border-bottom: 1px solid rgba(102, 85, 61, 0.25);
+            padding: 11px 0;
+            color: #554735;
+        }
+
+        .review-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* =========================
+           FOOTER NAVIGATION
+        ========================== */
+
+        footer {
+            border-top: 1px solid #a49377;
+            padding: 25px 55px 35px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #8f7b5d;
+            background: #eee3ce;
+            color: #4d4030;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            transition: 0.2s ease;
+        }
+
+        .nav-button:hover {
+            background: #dfcfb0;
+            border-color: #66553d;
+        }
+
+        /* =========================
+           TABLET
+        ========================== */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 30px 30px;
+            }
+
+            main {
+                padding: 35px 30px 40px;
+            }
+
+            footer {
+                padding: 22px 30px 30px;
+            }
+
+            .cards,
+            .latitude-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 7px;
+            }
+
+            .page::before {
+                inset: 6px;
+            }
+
+            header {
+                padding: 35px 20px 28px;
+            }
+
+            .back {
+                margin-bottom: 23px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+
+            main {
+                padding: 30px 20px 35px;
+            }
+
+            section {
+                margin-bottom: 48px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.94rem;
+            }
+
+            .intro {
+                font-size: 1rem;
+            }
+
+            .cards,
+            .latitude-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .concept {
+                padding: 19px;
+            }
+
+            .concept-title {
+                display: block;
+            }
+
+            .concept-title span {
+                display: block;
+                margin-top: 4px;
+            }
+
+            .image-box {
+                margin-top: 20px;
+            }
+
+            .image-placeholder {
+                min-height: 180px;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <a href="index.html" class="back">
+            ← Back to Lessons
+        </a>
+
+        <div class="lesson-label">
+            Lesson 01
+        </div>
+
+        <h1>
+            Pag-aaral ng Heograpiya ng Mundo
+        </h1>
+
+        <p class="subtitle">
+            Histo-page · Hiraya · TechPro 1103
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN LESSON
+    ========================== -->
+
+    <main>
+
+
+        <!-- INTRODUCTION -->
+
+        <section>
+
+            <div class="section-number">
+                01 — Panimula
+            </div>
+
+            <h2>
+                Pag-aaral ng Heograpiya ng Mundo
+            </h2>
+
+            <p class="intro">
+                Ang heograpiya ay pag-aaral tungkol sa daigdig,
+                kabilang ang mga lugar, anyong lupa at tubig,
+                lokasyon, klima, tao, at ugnayan ng mga ito sa
+                isa't isa. Sa pag-aaral ng heograpiya, ginagamit
+                ang iba't ibang kasangkapan upang matukoy at
+                mailarawan ang mga lugar sa mundo.
+            </p>
+
+            <div class="important">
+
+                <p>
+                    <strong>Mahalagang ideya:</strong>
+                    Ang mapa, globo, latitude, longitude, at mga
+                    guhit ng daigdig ay tumutulong upang mas
+                    madaling matukoy ang lokasyon ng isang lugar.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAPA AT GLOBO -->
+
+        <section>
+
+            <div class="section-number">
+                02 — Mga Kagamitan
+            </div>
+
+            <h2>
+                Mapa at Globo
+            </h2>
+
+            <div class="cards">
+
+                <article class="card">
+
+                    <h3>Mapa</h3>
+
+                    <p>
+                        Ang mapa ay isang patag na representasyon
+                        ng buong mundo o isang bahagi nito.
+                        Ginagamit ito upang makita ang lokasyon,
+                        direksyon, distansya, at iba pang
+                        katangian ng isang lugar.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <h3>Globo</h3>
+
+                    <p>
+                        Ang globo ay isang modelo ng daigdig na
+                        hugis halos katulad ng tunay na mundo.
+                        Mas naipapakita nito ang hugis at
+                        pagkakaayos ng mga kontinente at karagatan
+                        nang hindi gaanong naaapektuhan ng
+                        pagbaluktot ng isang patag na mapa.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="image-box">
+
+                <img
+                    src="images/glo.png"
+                    alt="Globo na nagpapakita ng latitude at longitude"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+
+                <div class="image-placeholder" style="display:none;">
+                    Ilagay dito ang larawan ng globo.<br>
+                    File: images/globe.svg
+                </div>
+
+                <div class="image-caption">
+                    Halimbawa ng globo na nagpapakita ng mga guhit ng latitude at longitude.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LATITUDE AND LONGITUDE -->
+
+        <section>
+
+            <div class="section-number">
+                03 — Heograpikong Guhit
+            </div>
+
+            <h2>
+                Latitude at Longitude
+            </h2>
+
+            <p>
+                Ang latitude at longitude ay mga imahinasyong
+                guhit na ginagamit upang matukoy ang eksaktong
+                posisyon ng isang lugar sa ibabaw ng daigdig.
+            </p>
+
+
+            <div class="concept">
+
+                <div class="concept-title">
+
+                    <h3>Latitude</h3>
+
+                    <span>
+                        Hilaga at Timog
+                    </span>
+
+                </div>
+
+                <p>
+                    Ang latitude ay mga imahinasyong guhit na
+                    pahalang sa globo. Sinusukat nito kung gaano
+                    kalayo ang isang lugar mula sa Ekwador,
+                    patungo sa Hilaga o Timog.
+                </p>
+
+                <p>
+                    Ang mga latitude ay may sukat mula
+                    <strong>0° hanggang 90° North o South.</strong>
+                </p>
+
+            </div>
+
+
+            <div class="concept">
+
+                <div class="concept-title">
+
+                    <h3>Longitude</h3>
+
+                    <span>
+                        Silangan at Kanluran
+                    </span>
+
+                </div>
+
+                <p>
+                    Ang longitude ay mga imahinasyong guhit na
+                    mula Hilaga patungong Timog sa globo.
+                    Sinusukat nito kung gaano kalayo ang isang
+                    lugar mula sa Prime Meridian patungong
+                    Silangan o Kanluran.
+                </p>
+
+                <p>
+                    Ang longitude ay sinusukat mula
+                    <strong>0° hanggang 180° East o West.</strong>
+                </p>
+
+            </div>
+
+
+            <div class="image-box">
+
+                <img
+                    src="images/ll.png"
+                    alt="Latitude at longitude ng daigdig"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+
+                <div class="image-placeholder" style="display:none;">
+                    Ilagay dito ang larawan ng latitude at longitude.<br>
+                    File: images/latitude-longitude.svg
+                </div>
+
+                <div class="image-caption">
+                    Latitude at longitude bilang sistema ng pagtukoy ng lokasyon.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EQUATOR -->
+
+        <section>
+
+            <div class="section-number">
+                04 — Pangunahing Guhit
+            </div>
+
+            <h2>
+                Ekwador
+            </h2>
+
+            <p>
+                Ang <strong>Ekwador</strong> ay ang pangunahing
+                guhit ng latitude na nasa <strong>0° latitude</strong>.
+                Hinahati nito ang daigdig sa dalawang bahagi:
+                Northern Hemisphere at Southern Hemisphere.
+            </p>
+
+            <div class="image-box">
+
+                <img
+                    src="images/eq.png"
+                    alt="Ekwador at Prime Meridian"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+
+                <div class="image-placeholder" style="display:none;">
+                    Ilagay dito ang mapa ng Ekwador at Prime Meridian.<br>
+                    File: images/equator-prime-meridian.svg
+                </div>
+
+                <div class="image-caption">
+                    Ekwador at Prime Meridian sa isang world map.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRIME MERIDIAN -->
+
+        <section>
+
+            <div class="section-number">
+                05 — Prime Meridian
+            </div>
+
+            <h2>
+                Prime Meridian
+            </h2>
+
+            <p>
+                Ang <strong>Prime Meridian</strong> ay ang
+                pangunahing guhit ng longitude na nasa
+                <strong>0° longitude</strong>. Dumaraan ito sa
+                Greenwich, England, at nagsisilbing panimulang
+                batayan sa pagsukat ng longitude.
+            </p>
+
+            <p>
+                Hinahati nito ang daigdig sa Eastern Hemisphere
+                at Western Hemisphere.
+            </p>
+
+            <div class="image-box">
+
+                <img
+                    src="images/pm.png"
+                    alt="Prime Meridian"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+
+                <div class="image-placeholder" style="display:none;">
+                    Ilagay dito ang larawan ng Prime Meridian.<br>
+                    File: images/prime-meridian.gif
+                </div>
+
+                <div class="image-caption">
+                    Prime Meridian — 0° longitude.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERNATIONAL DATE LINE -->
+
+        <section>
+
+            <div class="section-number">
+                06 — International Date Line
+            </div>
+
+            <h2>
+                International Date Line
+            </h2>
+
+            <p>
+                Ang <strong>International Date Line</strong> ay
+                isang imahinasyong linya na karaniwang matatagpuan
+                malapit sa <strong>180° longitude</strong>.
+                Ito ay ginagamit bilang batayan sa pagbabago ng
+                petsa kapag naglalakbay mula sa isang panig ng
+                daigdig patungo sa kabilang panig.
+            </p>
+
+            <div class="important">
+
+                <p>
+                    Hindi ito isang tuwid na linya sa lahat ng
+                    bahagi dahil may mga paglihis upang maiwasan
+                    ang paghahati sa ilang bansa at teritoryo.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SPECIAL LATITUDES -->
+
+        <section>
+
+            <div class="section-number">
+                07 — Espesyal na Guhit
+            </div>
+
+            <h2>
+                Espesyal na Guhit ng Latitude ng Daigdig
+            </h2>
+
+            <p>
+                Bukod sa Ekwador, may apat na mahalagang guhit
+                ng latitude na ginagamit upang hatiin at
+                mailarawan ang iba't ibang bahagi ng daigdig.
+            </p>
+
+
+            <div class="latitude-grid">
+
+                <article class="latitude-item">
+
+                    <div class="latitude-degree">
+                        23.5° N
+                    </div>
+
+                    <h3>
+                        Tropic of Cancer
+                    </h3>
+
+                    <p>
+                        Isang mahalagang latitude sa Northern
+                        Hemisphere.
+                    </p>
+
+                </article>
+
+
+                <article class="latitude-item">
+
+                    <div class="latitude-degree">
+                        23.5° S
+                    </div>
+
+                    <h3>
+                        Tropic of Capricorn
+                    </h3>
+
+                    <p>
+                        Isang mahalagang latitude sa Southern
+                        Hemisphere.
+                    </p>
+
+                </article>
+
+
+                <article class="latitude-item">
+
+                    <div class="latitude-degree">
+                        66.5° N
+                    </div>
+
+                    <h3>
+                        Arctic Circle
+                    </h3>
+
+                    <p>
+                        Guhit ng latitude na nakapalibot sa
+                        hilagang polar region.
+                    </p>
+
+                </article>
+
+
+                <article class="latitude-item">
+
+                    <div class="latitude-degree">
+                        66.5° S
+                    </div>
+
+                    <h3>
+                        Antarctic Circle
+                    </h3>
+
+                    <p>
+                        Guhit ng latitude na nakapalibot sa
+                        timog polar region.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOCATION -->
+
+        <section>
+
+            <div class="section-number">
+                08 — Lokasyon
+            </div>
+
+            <h2>
+                Mga Uri ng Lokasyon
+            </h2>
+
+            <p>
+                Ang lokasyon ay tumutukoy sa kinaroroonan ng
+                isang lugar. Maaaring ilarawan ang lokasyon sa
+                iba't ibang paraan depende sa impormasyong
+                ginagamit.
+            </p>
+
+
+            <div class="location-card">
+
+                <h3>
+                    Absolute Location
+                </h3>
+
+                <p>
+                    Tinutukoy ang eksaktong kinaroroonan ng isang
+                    lugar gamit ang tiyak na geographic
+                    coordinates, gaya ng latitude at longitude.
+                </p>
+
+                <div class="example">
+                    Halimbawa: 14°35′N, 121°00′E
+                </div>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <h3>
+                    Relative Location
+                </h3>
+
+                <p>
+                    Tinutukoy ang isang lugar batay sa kaugnayan
+                    nito sa ibang lugar o mga nakapaligid na
+                    lugar.
+                </p>
+
+                <div class="example">
+                    Halimbawa: Ang isang lugar ay nasa silangan
+                    ng isang ilog.
+                </div>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <h3>
+                    Vicinal Location
+                </h3>
+
+                <p>
+                    Tumutukoy sa lokasyon ng isang lugar batay
+                    sa mga kalapit o karatig na lugar nito.
+                    Nakakatulong ito upang mailarawan kung ano
+                    ang nasa paligid ng isang lugar.
+                </p>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <h3>
+                    Insular Location
+                </h3>
+
+                <p>
+                    Tumutukoy sa lokasyon ng isang lugar na
+                    nauugnay sa mga pulo o isla. Ang isang
+                    insular na bansa o lugar ay binubuo ng isa
+                    o higit pang mga pulo at napapaligiran ng
+                    katubigan.
+                </p>
+
+                <div class="example">
+                    Halimbawa: Ang Pilipinas ay isang bansang
+                    insular dahil binubuo ito ng maraming isla.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CARTOGRAPHER -->
+
+        <section>
+
+            <div class="section-number">
+                09 — Pagmamapa
+            </div>
+
+            <h2>
+                Cartograpo
+            </h2>
+
+            <div class="cartographer">
+
+                <h3>
+                    Ano ang Cartograpo?
+                </h3>
+
+                <p>
+                    Ang <strong>cartograpo</strong> ay taong
+                    dalubhasa sa paggawa, pagbuo, pagsusuri,
+                    at pagdidisenyo ng mga mapa.
+                </p>
+
+                <p>
+                    Gumagamit ang mga cartograpo ng iba't ibang
+                    impormasyon at teknolohiya upang makagawa
+                    ng mga mapa na malinaw at kapaki-pakinabang
+                    sa pag-aaral ng mga lugar sa mundo.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK REVIEW -->
+
+        <section>
+
+            <div class="review">
+
+                <div class="section-number">
+                    Quick Review
+                </div>
+
+                <h2>
+                    Ano ang dapat tandaan?
+                </h2>
+
+                <ul class="review-list">
+
+                    <li>
+                        <strong>Mapa</strong> — patag na representasyon
+                        ng isang lugar o ng daigdig.
+                    </li>
+
+                    <li>
+                        <strong>Globo</strong> — modelo ng daigdig.
+                    </li>
+
+                    <li>
+                        <strong>Latitude</strong> — sumusukat sa
+                        layo mula sa Ekwador patungong Hilaga o Timog.
+                    </li>
+
+                    <li>
+                        <strong>Longitude</strong> — sumusukat sa
+                        layo mula sa Prime Meridian patungong
+                        Silangan o Kanluran.
+                    </li>
+
+                    <li>
+                        <strong>Ekwador</strong> — 0° latitude.
+                    </li>
+
+                    <li>
+                        <strong>Prime Meridian</strong> — 0° longitude.
+                    </li>
+
+                    <li>
+                        <strong>International Date Line</strong> —
+                        karaniwang malapit sa 180° longitude.
+                    </li>
+
+                    <li>
+                        <strong>Absolute Location</strong> —
+                        eksaktong lokasyon gamit ang coordinates.
+                    </li>
+
+                    <li>
+                        <strong>Relative Location</strong> —
+                        lokasyon batay sa kaugnayan sa ibang lugar.
+                    </li>
+
+                    <li>
+                        <strong>Cartograpo</strong> — taong
+                        dalubhasa sa paggawa ng mapa.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER NAVIGATION
+    ========================== -->
+
+    <footer>
+
+        <a href="index.html" class="nav-button">
+            ← Back to Home
+        </a>
+
+        <a href="lesson2.html" class="nav-button">
+            Lesson 2 →
+        </a>
+
+    </footer>
+
+</div>
+
+</body>
+  </html>
