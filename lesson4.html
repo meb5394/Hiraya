@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 4 | Hiraya</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at top, #eee1c8, #dfcfb0 45%, #cbb995);
+            color: #30291f;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .page {
+            width: min(1050px, 100%);
+            margin: auto;
+            background: #f7efde;
+            border: 2px solid #66553d;
+            box-shadow: 0 12px 30px rgba(57, 44, 27, 0.18);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 55px;
+            border-bottom: 1px solid #a49377;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #69583f;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .lesson-label,
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            color: #8a7350;
+            text-transform: uppercase;
+        }
+
+        .lesson-label {
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 4.2rem);
+            font-weight: normal;
+            line-height: 1.05;
+            color: #382f24;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: #6d5d47;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+        }
+
+        /* CONTENT */
+
+        main {
+            padding: 45px 55px 55px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-number {
+            margin-bottom: 7px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            font-weight: normal;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #3b3226;
+        }
+
+        p {
+            color: #5a4d3b;
+            margin-bottom: 15px;
+        }
+
+        /* INTRO */
+
+        .intro {
+            background: #eee3ce;
+            border-left: 3px solid #8a7350;
+            padding: 22px;
+        }
+
+        .intro p {
+            margin: 0;
+        }
+
+        /* PEOPLE CARDS */
+
+        .groups {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .group-card {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 25px;
+        }
+
+        .group-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            color: #8a7350;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .group-card h3 {
+            font-size: 1.7rem;
+            font-weight: normal;
+            margin-bottom: 10px;
+            color: #403426;
+        }
+
+        .group-card p {
+            font-size: 0.94rem;
+            margin: 0;
+        }
+
+        /* CONCLUSION */
+
+        .conclusion {
+            background: #ded0b5;
+            border: 1px solid #8e7a5b;
+            padding: 25px;
+        }
+
+        .conclusion p {
+            margin: 0;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #a49377;
+            padding: 25px 55px 35px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #8f7b5d;
+            background: #eee3ce;
+            color: #4d4030;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+        }
+
+        .nav-button:hover {
+            background: #dfcfb0;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 30px 30px;
+            }
+
+            main {
+                padding: 35px 30px 40px;
+            }
+
+            footer {
+                padding: 22px 30px 30px;
+            }
+
+            .groups {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+    /* GROUP IMAGES */
+
+.group-image {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+    border: 1px solid #a49377;
+}
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 7px;
+            }
+
+            header {
+                padding: 35px 20px 28px;
+            }
+
+            h1 {
+                font-size: 2.35rem;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+
+            main {
+                padding: 30px 20px 35px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.92rem;
+            }
+
+            .intro,
+            .group-card,
+            .conclusion {
+                padding: 19px;
+            }
+
+            .group-card h3 {
+                font-size: 1.5rem;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="index.html" class="back">
+            ← Back to Lessons
+        </a>
+
+        <div class="lesson-label">
+            Lesson 04
+        </div>
+
+        <h1>
+            Iba't Ibang Pangkat ng Tao
+        </h1>
+
+        <p class="subtitle">
+            Mga Pangkat na Naging Bahagi ng Ating Pinagmulan · Hiraya · TechPro 1103
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- INTRODUCTION -->
+
+        <section>
+
+            <div class="section-number">
+                01 — Panimula
+            </div>
+
+            <h2>
+                Ating Pinagmulan
+            </h2>
+
+            <div class="intro">
+
+                <p>
+                    Ang Pilipinas ay mayaman sa iba't ibang kultura
+                    at pangkat ng tao. Ang mga pangkat na ito ay
+                    nagkaroon ng mahalagang bahagi sa pagbuo ng
+                    kasaysayan, kultura, at pagkakakilanlan ng
+                    mga Pilipino.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- GROUPS -->
+
+        <section>
+
+            <div class="section-number">
+                02 — Mga Pangkat
+            </div>
+
+            <h2>
+                Mga Pangkat ng Tao
+            </h2>
+
+            <div class="groups">
+
+            <!-- AETA -->
+
+<article class="group-card">
+
+    <img
+        src="images/aeta.jpg"
+        alt="Aeta people"
+        class="group-image"
+    >
+
+    <div class="group-number">
+        01
+    </div>
+
+    <h3>
+        Aeta
+    </h3>
+
+    <p>
+        Ang mga Aeta ay kabilang sa mga katutubong
+        pangkat ng Pilipinas. Matatagpuan sila sa
+        iba't ibang bahagi ng Luzon at may sariling
+        kultura, wika, at tradisyon.
+    </p>
+
+</article>
+
+
+<!-- INDONESIAN -->
+
+<article class="group-card">
+
+    <img
+        src="images/indonesian.jpg"
+        alt="Indonesian people"
+        class="group-image"
+    >
+
+    <div class="group-number">
+        02
+    </div>
+
+    <h3>
+        Indonesian
+    </h3>
+
+    <p>
+        Ang mga Indonesian ay kabilang sa mga
+        populasyong mula sa kapuluan ng Timog-Silangang
+        Asya. May mga ugnayan ang mga sinaunang
+        populasyon sa rehiyon sa pamamagitan ng
+        paglalakbay at paglipat ng mga tao.
+    </p>
+
+</article>
+
+
+<!-- MALAY -->
+
+<article class="group-card">
+
+    <img
+        src="images/malay.jpg"
+        alt="Malay people"
+        class="group-image"
+    >
+
+    <div class="group-number">
+        03
+    </div>
+
+    <h3>
+        Malay
+    </h3>
+
+    <p>
+        Ang mga Malay ay bahagi ng malawak na
+        populasyon sa Timog-Silangang Asya.
+        Naging mahalaga ang mga ugnayan ng mga
+        pamayanang Malay sa kalakalan, kultura,
+        at paglalakbay sa rehiyon.
+    </p>
+
+</article>
+
+
+<!-- IVATAN -->
+
+<article class="group-card">
+
+    <img
+        src="images/ivatan.jpg"
+        alt="Ivatan people"
+        class="group-image"
+    >
+
+    <div class="group-number">
+        04
+    </div>
+
+    <h3>
+        Ivatan
+    </h3>
+
+    <p>
+        Ang mga Ivatan ay isang katutubong pangkat
+        na naninirahan sa Batanes. Kilala sila sa
+        kanilang natatanging kultura, tradisyon,
+        at paraan ng pamumuhay na nakaangkop sa
+        kapaligiran ng mga isla.
+    </p>
+
+</article>
+
+
+               
+            </div>
+
+        </section>
+
+
+        <!-- CONCLUSION -->
+
+        <section>
+
+            <div class="section-number">
+                03 — Kahalagahan
+            </div>
+
+            <h2>
+                Bakit Ito Mahalaga?
+            </h2>
+
+            <div class="conclusion">
+
+                <p>
+                    Ang pagkilala sa iba't ibang pangkat ng tao
+                    ay tumutulong sa atin na maunawaan ang
+                    pagkakaiba-iba at kayamanan ng kultura ng
+                    Pilipinas. Ang bawat pangkat ay may sariling
+                    kasaysayan, tradisyon, at kontribusyon sa
+                    ating lipunan.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- NAVIGATION -->
+
+    <footer>
+
+        <a href="lesson3.html" class="nav-button">
+            ← Lesson 3
+        </a>
+
+        <a href="lesson5.html" class="nav-button">
+            Lesson 5 →
+        </a>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
