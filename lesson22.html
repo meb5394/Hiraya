@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 1 Term 2 | Hiraya - Lesson</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(
+                    circle at top,
+                    #eee1c8 0%,
+                    #dfcfb0 45%,
+                    #cbb995 100%
+                );
+            color: #30291f;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        /* =========================
+           IMAGE OPTIMIZATION & CONTROL
+        ========================== */
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 4px;
+            border: 1px solid #a49377;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-card {
+            max-height: 300px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .image-caption {
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            color: #6d5d47;
+            text-align: center;
+            margin-top: -8px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================== */
+
+        .page {
+            width: min(1050px, 100%);
+            margin: auto;
+            background: #f7efde;
+            border: 2px solid #66553d;
+            box-shadow: 0 12px 30px rgba(57, 44, 27, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 9px;
+            border: 1px solid rgba(102, 85, 61, 0.3);
+            pointer-events: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            padding: 55px 55px 40px;
+            border-bottom: 1px solid #a49377;
+            position: relative;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #69583f;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+        .lesson-label {
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+            color: #8a7350;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: normal;
+            line-height: 1.15;
+            color: #382f24;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: #6d5d47;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+        }
+
+        /* =========================
+           CONTENT
+        ========================== */
+
+        main {
+            padding: 45px 55px 55px;
+        }
+
+        section {
+            margin-bottom: 60px;
+            scroll-margin-top: 25px;
+        }
+
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            color: #8a7350;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+            font-weight: normal;
+            line-height: 1.25;
+            margin-bottom: 18px;
+            color: #3b3226;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #4b3e2e;
+        }
+
+        p {
+            color: #5a4d3b;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           WORD / TEXT BOXES
+        ========================== */
+
+        .word-box {
+            border: 1px solid #a49377;
+            background: rgba(238, 227, 206, 0.45);
+            padding: 18px 22px;
+            margin: 15px 0;
+            color: #4a3e2f;
+            font-size: 0.95rem;
+        }
+
+        .word-box-label {
+            font-weight: bold;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #8a7350;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        /* =========================
+           HIGHLIGHT BOXES
+        ========================== */
+
+        .important {
+            border-left: 3px solid #8a7350;
+            background: #eee3ce;
+            padding: 20px 22px;
+            margin-top: 25px;
+        }
+
+        .important p {
+            margin: 0;
+        }
+
+        /* =========================
+           TWO COLUMN CARDS
+        ========================== */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 22px;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 0.92rem;
+        }
+
+        /* =========================
+           CONCEPT CARDS
+        ========================== */
+
+        .concept {
+            border: 1px solid #a49377;
+            padding: 25px;
+            margin-top: 18px;
+            background: rgba(238, 227, 206, 0.55);
+        }
+
+        .concept-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .concept-title span {
+            font-family: Arial, sans-serif;
+            font-size: 0.68rem;
+            color: #8a7350;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* =========================
+           GRID LIST
+        ========================== */
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 25px;
+        }
+
+        .topic-item {
+            padding: 20px;
+            background: #eee3ce;
+            border: 1px solid #a49377;
+        }
+
+        .topic-category {
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            color: #8a7350;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .topic-item h3 {
+            margin-bottom: 7px;
+        }
+
+        .topic-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* =========================
+           FOOTER NAVIGATION
+        ========================== */
+
+        footer {
+            border-top: 1px solid #a49377;
+            padding: 25px 55px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #8f7b5d;
+            background: #eee3ce;
+            color: #4d4030;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            transition: 0.2s ease;
+        }
+
+        .nav-button:hover {
+            background: #dfcfb0;
+            border-color: #66553d;
+        }
+
+        /* =========================
+           RESPONSIVE MEDIA QUERIES
+        ========================== */
+
+        @media (max-width: 750px) {
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 30px 30px;
+            }
+
+            main {
+                padding: 35px 30px 40px;
+            }
+
+            footer {
+                padding: 22px 30px 30px;
+            }
+
+            .cards,
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 7px;
+            }
+
+            .page::before {
+                inset: 6px;
+            }
+
+            header {
+                padding: 35px 20px 28px;
+            }
+
+            .back {
+                margin-bottom: 23px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+
+            main {
+                padding: 30px 20px 35px;
+            }
+
+            section {
+                margin-bottom: 48px;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            p {
+                font-size: 0.94rem;
+            }
+
+            .concept {
+                padding: 19px;
+            }
+
+            .concept-title {
+                display: block;
+            }
+
+            .concept-title span {
+                display: block;
+                margin-top: 4px;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <a href="index.html" class="back">
+            ← Back to Lessons
+        </a>
+
+        <div class="lesson-label">
+            Lesson 01 · Term 2
+        </div>
+
+        <h1>
+            
+            -Elmer
+            
+        </h1>
+
+        <p class="subtitle">
+            Histo-page · Hiraya · TechPro 1103
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN LESSON CONTENT
+    ========================== -->
+
+    <main>
+
+        <!-- SECTION 1: PANIMULA / OVERVIEW -->
+        <section>
+
+            <div class="section-number">
+                01
+            </div>
+
+            <h2>
+                
+                -Pwede palitan subtitle
+                
+            </h2>
+
+            <div class="word-box">
+                <span class="word-box-label">Explanation</span>
+                
+                -lagay dito explanation
+                
+            </div>
+
+
+        </section>
+
+
+        <!-- SECTION 2: COMPARISON / CARDS LAYOUT -->
+         <section>
+
+            <div class="section-number">
+                02
+            </div>
+
+            <h2>
+                
+                -Pwede palitan subtitle
+                
+            </h2>
+
+            <div class="word-box">
+                <span class="word-box-label">Explanation</span>
+                
+                -lagay dito explanation
+                
+            </div>
+
+         </section>
+
+        <!-- SECTION 3: DETAILED BREAKDOWN -->
+       <section>
+
+            <div class="section-number">
+                03
+            </div>
+
+            <h2>
+                
+                -Pwede palitan subtitle
+                
+            </h2>
+
+            <div class="word-box">
+                <span class="word-box-label">Explanation</span>
+                
+                -lagay dito explanation
+                
+            </div>
+
+
+        </section>
+
+
+        <!-- SECTION 4: FOUR-GRID LAYOUT -->
+         <section>
+
+            <div class="section-number">
+                04
+            </div>
+
+            <h2>
+                
+                -Pwede palitan subtitle
+                
+            </h2>
+
+            <div class="word-box">
+                <span class="word-box-label">Explanation</span>
+                
+                -lagay dito explanation
+                
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER NAVIGATION
+    ========================== -->
+
+    <footer>
+
+        <a href="lesson21.html" class="nav-button">
+            ← Lesson 1
+        </a>
+
+        <a href="lesson22.html" class="nav-button">
+            Next Lesson →
+        </a>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
