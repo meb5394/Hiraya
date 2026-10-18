@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 3 Term 2 | Hiraya - Lesson</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(
+                    circle at top,
+                    #eee1c8 0%,
+                    #dfcfb0 45%,
+                    #cbb995 100%
+                );
+            color: #30291f;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        /* =========================
+           IMAGE OPTIMIZATION & CONTROL
+        ========================== */
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 4px;
+            border: 1px solid #a49377;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-card {
+            max-height: 300px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .image-caption {
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            color: #6d5d47;
+            text-align: center;
+            margin-top: -8px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================== */
+
+        .page {
+            width: min(1050px, 100%);
+            margin: auto;
+            background: #f7efde;
+            border: 2px solid #66553d;
+            box-shadow: 0 12px 30px rgba(57, 44, 27, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 9px;
+            border: 1px solid rgba(102, 85, 61, 0.3);
+            pointer-events: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            padding: 55px 55px 40px;
+            border-bottom: 1px solid #a49377;
+            position: relative;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #69583f;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+        .lesson-label {
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+            color: #8a7350;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: normal;
+            line-height: 1.15;
+            color: #382f24;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: #6d5d47;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+        }
+
+        /* =========================
+           CONTENT
+        ========================== */
+
+        main {
+            padding: 45px 55px 55px;
+        }
+
+        section {
+            margin-bottom: 60px;
+            scroll-margin-top: 25px;
+        }
+
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            color: #8a7350;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+            font-weight: normal;
+            line-height: 1.25;
+            margin-bottom: 18px;
+            color: #3b3226;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #4b3e2e;
+        }
+
+        p {
+            color: #5a4d3b;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           WORD / TEXT BOXES
+        ========================== */
+
+        .word-box {
+            border: 1px solid #a49377;
+            background: rgba(238, 227, 206, 0.45);
+            padding: 18px 22px;
+            margin: 15px 0;
+            color: #4a3e2f;
+            font-size: 0.95rem;
+        }
+
+        .word-box-label {
+            font-weight: bold;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #8a7350;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        /* =========================
+           HIGHLIGHT BOXES
+        ========================== */
+
+        .important {
+            border-left: 3px solid #8a7350;
+            background: #eee3ce;
+            padding: 20px 22px;
+            margin-top: 25px;
+        }
+
+        .important p {
+            margin: 0;
+        }
+
+        /* =========================
+           TWO COLUMN CARDS
+        ========================== */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background: #eee3ce;
+            border: 1px solid #a49377;
+            padding: 22px;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 0.92rem;
+        }
+
+        /* =========================
+           CONCEPT CARDS
+        ========================== */
+
+        .concept {
+            border: 1px solid #a49377;
+            padding: 25px;
+            margin-top: 18px;
+            background: rgba(238, 227, 206, 0.55);
+        }
+
+        .concept-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .concept-title span {
+            font-family: Arial, sans-serif;
+            font-size: 0.68rem;
+            color: #8a7350;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* =========================
+           GRID LIST
+        ========================== */
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 25px;
+        }
+
+        .topic-item {
+            padding: 20px;
+            background: #eee3ce;
+            border: 1px solid #a49377;
+        }
+
+        .topic-category {
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            color: #8a7350;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .topic-item h3 {
+            margin-bottom: 7px;
+        }
+
+        .topic-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* =========================
+           FOOTER NAVIGATION
+        ========================== */
+
+        footer {
+            border-top: 1px solid #a49377;
+            padding: 25px 55px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #8f7b5d;
+            background: #eee3ce;
+            color: #4d4030;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            transition: 0.2s ease;
+        }
+
+        .nav-button:hover {
+            background: #dfcfb0;
+            border-color: #66553d;
+        }
+
+        /* =========================
+           RESPONSIVE MEDIA QUERIES
+        ========================== */
+
+        @media (max-width: 750px) {
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 30px 30px;
+            }
+
+            main {
+                padding: 35px 30px 40px;
+            }
+
+            footer {
+                padding: 22px 30px 30px;
+            }
+
+            .cards,
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 7px;
+            }
+
+            .page::before {
+                inset: 6px;
+            }
+
+            header {
+                padding: 35px 20px 28px;
+            }
+
+            .back {
+                margin-bottom: 23px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+
+            main {
+                padding: 30px 20px 35px;
+            }
+
+            section {
+                margin-bottom: 48px;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            p {
+                font-size: 0.94rem;
+            }
+
+            .concept {
+                padding: 19px;
+            }
+
+            .concept-title {
+                display: block;
+            }
+
+            .concept-title span {
+                display: block;
+                margin-top: 4px;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <a href="index.html" class="back">
+            ← Back to Lessons
+        </a>
+
+        <div class="lesson-label">
+            Lesson 3 · Term 2
+        </div>
+
+        <h1>
+            
+            Pakikiangkop ng mga Pilipino sa Pagsulong ng Kamalayang Pilipino
+            
+        </h1>
+
+        <p class="subtitle">
+            Histo-page · Hiraya · TechPro 1103
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN LESSON CONTENT
+    ========================== -->
+
+    <main>
+
+        <section>
+            <div class="section-number">01</div>
+            <h2>Pag-unawa sa Kamalayang Pilipino</h2>
+            <div class="word-box">
+                <span class="word-box-label">Panimula</span>
+                Ang <strong>kamalayang Pilipino</strong> ay ang pagkilala ng mga Pilipino sa kanilang pagkakakilanlan, karapatan, at pagkakaisa bilang isang bayan. Noong panahon ng pananakop ng mga Espanyol, unti-unting nagbago ang pananaw ng ilang Pilipino dahil sa edukasyon, karanasan sa lipunan, at paglaganap ng mga bagong ideya.
+            </div>
+            <p>Hindi agad nabuo ang pambansang kamalayan. Sa paglipas ng panahon, mas maraming Pilipino ang nagsimulang magtanong tungkol sa hindi pantay na pagtrato, pang-aabuso, at kawalan ng pagkakataon sa ilalim ng kolonyal na pamahalaan.</p>
+            <div class="important">
+                <p><strong>Pangunahing ideya:</strong> Sa pag-angkop sa nagbabagong kalagayan, natutuhan ng mga Pilipino na gamitin ang edukasyon, pagsusulat, organisasyon, at pagkakaisa upang ipahayag ang kanilang mga hinaing at hangarin para sa bayan.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-number">02</div>
+            <h2>Mga Pagbabagong Nakaimpluwensiya sa mga Pilipino</h2>
+            <div class="word-box">
+                <span class="word-box-label">Paliwanag</span>
+                May mga pagbabagong nagbigay sa ilang Pilipino ng mas malawak na kaalaman tungkol sa lipunan at sa mga ideya mula sa ibang bansa. Nakatulong ang mga ito sa pag-usbong ng pag-iisip na ang mga Pilipino ay dapat magkaroon ng makatarungang pagtrato at karapatan.
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <h3>Edukasyon</h3>
+                    <p>Ang pag-aaral ay nagbigay sa ilang Pilipino ng kakayahang magsuri, magsulat, at maunawaan ang mga ideya tungkol sa kalayaan, pagkakapantay-pantay, at karapatan.</p>
+                </div>
+                <div class="card">
+                    <h3>Pag-usbong ng mga Ilustrado</h3>
+                    <p>Ang mga ilustrado ay mga edukadong Pilipino na gumamit ng kanilang kaalaman upang talakayin ang mga suliranin ng lipunan at humingi ng mga reporma.</p>
+                </div>
+                <div class="card">
+                    <h3>Pagbubukas sa mga ideya mula sa ibang bansa</h3>
+                    <p>Ang paglawak ng kalakalan at pakikipag-ugnayan sa ibang lugar ay nagbigay sa ilang Pilipino ng pagkakataong makakilala ng mga liberal na ideya at bagong pananaw.</p>
+                </div>
+                <div class="card">
+                    <h3>Hindi pantay na pagtrato</h3>
+                    <p>Ang diskriminasyon at pang-aabuso sa ilalim ng kolonyal na sistema ay nagpalalim sa pagkadismaya at nag-udyok sa mga Pilipino na humingi ng pagbabago.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-number">03</div>
+            <h2>Mga Paraan ng Pakikiangkop at Pagkilos</h2>
+            <div class="word-box">
+                <span class="word-box-label">Paliwanag</span>
+                Hindi iisa ang naging tugon ng mga Pilipino sa kolonyal na pamamahala. May mga gumamit ng mapayapang paraan upang humingi ng reporma, samantalang ang iba ay kalaunang sumuporta sa mas malawak na pakikibaka para sa kalayaan.
+            </div>
+            <div class="concept">
+                <div class="concept-title">
+                    <h3>Kilusang Propaganda</h3>
+                    <span>Reporma sa pamamagitan ng panulat</span>
+                </div>
+                <p>Ang mga Pilipinong tulad nina <strong>José Rizal, Marcelo H. del Pilar, at Graciano López Jaena</strong> ay gumamit ng mga sanaysay, nobela, pahayagan, at talumpati upang ilantad ang mga suliranin sa Pilipinas at humingi ng pagbabago. Kabilang sa mga hangarin ang pantay na karapatan at mas makatarungang pamamahala.</p>
+            </div>
+            <div class="concept">
+                <div class="concept-title">
+                    <h3>Pagkamulat sa pamamagitan ng mga pangyayari</h3>
+                    <span>Pagkakaisa at damdaming makabayan</span>
+                </div>
+                <p>Ang pagbitay kina <strong>Padre Mariano Gómez, José Burgos, at Jacinto Zamora (GOMBURZA)</strong> noong 1872 ay naging mahalagang pangyayari sa kasaysayan ng nasyonalismong Pilipino. Para sa maraming Pilipino, lalo nitong ipinakita ang kawalan ng katarungan sa kolonyal na sistema.</p>
+            </div>
+            <div class="concept">
+                <div class="concept-title">
+                    <h3>Mula sa reporma tungo sa rebolusyon</h3>
+                    <span>Pagbabago ng layunin</span>
+                </div>
+                <p>Hindi lahat ng repormista ay agad humingi ng ganap na kalayaan. Ngunit nang hindi makamit ang mga hinihinging pagbabago at nagpatuloy ang pang-aabuso, lumakas ang paniniwala ng ilan na kailangan ang mas radikal na pagkilos. Itinatag ni Andrés Bonifacio at ng mga kasama niya ang <strong>Katipunan</strong> noong 1892 upang isulong ang pakikibaka para sa kalayaan.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-number">04</div>
+            <h2>Epekto at Kahalagahan ng Kamalayang Pilipino</h2>
+            <div class="word-box">
+                <span class="word-box-label">Paliwanag</span>
+                Sa paglipas ng panahon, ang mga karanasan, ideya, at pagkilos ng mga Pilipino ay nakatulong sa pagbuo ng mas malawak na pagkakaisa at pagkilala sa sarili bilang isang bansa.
+            </div>
+            <div class="topic-grid">
+                <div class="topic-item">
+                    <div class="topic-category">Epekto 01</div>
+                    <h3>Pagkakakilanlan</h3>
+                    <p>Mas lumalim ang pagkilala ng mga Pilipino sa kanilang sarili bilang bahagi ng iisang bayan, sa kabila ng pagkakaiba-iba ng kanilang pinagmulan at lugar.</p>
+                </div>
+                <div class="topic-item">
+                    <div class="topic-category">Epekto 02</div>
+                    <h3>Paghingi ng karapatan</h3>
+                    <p>Mas naging malinaw ang mga panawagan para sa pantay na pagtrato, makatarungang pamamahala, at kalayaang magpahayag.</p>
+                </div>
+                <div class="topic-item">
+                    <div class="topic-category">Epekto 03</div>
+                    <h3>Pagkakaisa</h3>
+                    <p>Nakatulong ang mga akda, samahan, at sama-samang pagkilos sa pagpapalaganap ng damdaming makabayan.</p>
+                </div>
+                <div class="topic-item">
+                    <div class="topic-category">Epekto 04</div>
+                    <h3>Paghahanda sa kalayaan</h3>
+                    <p>Naging mahalagang bahagi ng pag-usbong ng nasyonalismo ang kamalayang Pilipino at ang mga pagkilos na humantong sa Himagsikang Pilipino noong 1896.</p>
+                </div>
+            </div>
+            <div class="important">
+                <p><strong>Buod:</strong> Ang pakikiangkop ng mga Pilipino ay hindi lamang simpleng pagsunod sa pagbabago. Kabilang dito ang pag-aaral sa bagong kalagayan, pagsusuri sa kawalan ng katarungan, at paggamit ng iba’t ibang paraan upang ipaglaban ang karapatan at kinabukasan ng bayan.</p>
+            </div>
+            
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER NAVIGATION
+    ========================== -->
+
+    <footer>
+
+        <a href="index.html" class="nav-button">
+            ← Back to Home
+        </a>
+
+        <a href="lesson21.html" class="nav-button">
+            Next Lesson →
+        </a>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
